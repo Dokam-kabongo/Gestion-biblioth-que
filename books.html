@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livres | Bibliothèque Universitaire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVIGATION identique à l'accueil, tout en haut -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="books.html" class="active">Livres</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="events.html">Événements</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">À propos</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1 class="main-title">Catalogue de Livres</h1>
+        <p class="subtitle">Parcourez notre étagère de livres universitaires</p>
+    </header>
+
+    <main>
+        <section class="books">
+            <h2>Nos livres disponibles</h2>
+            <input type="text" id="searchBar" placeholder="Rechercher un livre...">
+            <div id="bookList" class="book-grid">
+                <!-- Les livres s’affichent ici dynamiquement -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Bibliothèque Universitaire | By Dokam KABONGO MWANA NDAYA</p>
+    </footer>
+
+    <script>
+        const books = [
+            { title: "Programmation Python", author: "Jean Dupont", image: "images/livres/livre1.jpg" },
+            { title: "Introduction à l’IA", author: "Alice Martin", image: "images/livres/livre2.jpg" },
+            { title: "Maths pour l'informatique", author: "Marc Leroy", image: "images/livres/livre3.jpg" },
+            { title: "IA & Data Science avec Python", author: "Marc Leroy", image: "images/livres/livre3.jpg" },
+            { title: "Hands-On ML with Scikit-Learn, Keras & TensorFlow", author: "Alice Martin", image: "images/livres/livre2.jpg" },
+            { title: "Node.js – Guide du développeur JS côté serveur", author: "Marc Leroy", image: "images/livres/livre3.jpg" },
+            { title: "Introduction to Algorithms", author: "Marc Leroy", image: "images/livres/livre3.jpg" },
+            { title: "Grokking Algorithms", author: "Jean Dupont", image: "images/livres/livre1.jpg" },
+            { title: "Algorithmique", author: "Alice Martin", image: "images/livres/livre2.jpg" },
+            { title: "Java pour les nuls", author: "Marc Leroy", image: "java.jpg" },
+            { title: "The Art of Computer Programming", author: "Marc Leroy", image: "images/livres/livre3.jpg" }
+        ];
+
+        const bookList = document.getElementById("bookList");
+        const searchBar = document.getElementById("searchBar");
+
+        function displayBooks(filter = "") {
+            bookList.innerHTML = "";
+            const filteredBooks = books.filter(book =>
+                book.title.toLowerCase().includes(filter.toLowerCase()) ||
+                book.author.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            filteredBooks.forEach(book => {
+                const bookDiv = document.createElement("div");
+                bookDiv.className = "book";
+                bookDiv.innerHTML = `
+                    <img src="${book.image}" alt="${book.title}">
+                    <h3>${book.title}</h3>
+                    <p>${book.author}</p>
+                `;
+                bookList.appendChild(bookDiv);
+            });
+        }
+
+        searchBar.addEventListener("input", () => displayBooks(searchBar.value));
+        displayBooks();
+    </script>
+</body>
+</html>
