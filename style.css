@@ -76,6 +76,7 @@ header {
   letter-spacing: 1px;
 }
 
+
 .hero {
   display: flex;
   flex-wrap: wrap;
@@ -135,6 +136,7 @@ header {
   transform: scale(1.06);
   color: #fff;
 }
+
 
 .atouts {
   max-width: 900px;
@@ -548,6 +550,7 @@ nav a {
   padding-left: 1.2rem;
   font-size: 1rem;
 }
+
 
 .about-slogan {
   color: #111;
